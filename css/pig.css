@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap");
+* {
+  margin: 0%;
+  padding: 0%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Bakbak One", cursive;
+}
+
+section {
+  background-color: palegoldenrod;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+}
+
+section div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section div .sub_item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+section div .sub_item p {
+  text-align: center;
+}
+
+.sub_item_deco {
+  border: 1px solid #f2789f;
+  border-radius: 25px;
+  height: 150px;
+  width: 130px;
+  background-color: #f9c5d5;
+}
+
+.title {
+  font-size: 1.6rem;
+}
+
+.sm_title {
+  font-size: 1.5rem;
+}
+
+.score {
+  font-size: 1.4rem;
+}
+
+.sm_score {
+  font-size: 1.2rem;
+}
+
+.bt {
+  width: 100px;
+  height: 40px;
+  border: 1px solid silver;
+  border-radius: 25px;
+  background-color: whitesmoke;
+  text-align: center;
+  cursor: pointer;
+}
+
+.bt p {
+  padding: 0.6rem;
+  text-align: center;
+}
+
+.bt_panel {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+}
+
+.pt {
+  background-color: pink;
+}
+
+main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+  width: 80vw;
+  height: 60vh;
+  margin-top: 10%;
+}
+
+body {
+  margin: auto;
+  width: 80vw;
+  padding: 10px;
+  overflow-x: hidden;
+}
+/*# sourceMappingURL=pig.css.map */
