@@ -1,92 +1,139 @@
+/** @format */
+
 @import url("https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&family=Roboto:wght@100;400&display=swap");
 * {
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-    font-family: "Bakbak One", cursive;
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  font-family: "Bakbak One", cursive;
+}
+
+body {
+  margin: auto;
+  width: 80vw;
+  padding: 10px;
+  overflow-x: hidden;
+  background-color: #f5f5f5;
+}
+
+main {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 80vw;
+  height: 60vh;
+  margin-top: 10%;
+  padding: 16px;
+  border: 1px solid #30475e;
+  border-radius: 25px;
+  background-color: #ccd1e4;
+}
+
+.rules {
+  background-color: transparent;
+  display: grid;
+  grid-template-columns: auto;
+  gap: 12px;
+  color: #333333;
+  margin: 1%;
+  .txt_sm {
+    font-size: 0.9rem;
+    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
+  }
 }
 
 section {
-    background-color: palegoldenrod;
-    //height: 100vh;
-    //width: 25vw;
-    display: grid;
-    grid-template-columns: auto;
-    div {
-        // border: 1px solid rebeccapurple;
-        display: flex;
-        justify-content: center;
-        .sub_item {
-            //border: 1px solid red;
-            display: grid;
-            grid-template-columns: auto;
-            justify-content: center;
-            align-items: center;
-            p {
-                // background-color: red;
-                text-align: center;
-            }
-        }
+  //background-color: palegoldenrod;
+  //height: 100vh;
+  //width: 25vw;
+  display: grid;
+  grid-template-columns: auto;
+  div {
+    // border: 1px solid rebeccapurple;
+    display: flex;
+    justify-content: center;
+    .sub_item {
+      //border: 1px solid red;
+      display: grid;
+      grid-template-columns: auto;
+      justify-content: center;
+      align-items: center;
+      p {
+        // background-color: red;
+        text-align: center;
+      }
     }
+  }
 }
 
 .sub_item_deco {
-    border: 1px solid #f2789f;
-    border-radius: 25px;
-    height: 150px;
-    width: 130px;
-    background-color: #f9c5d5;
+  border: 1px solid #30475e;
+  border-radius: 25px;
+  height: 150px;
+  width: 130px;
+  background-color: #30475e;
 }
 
 .title {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 .sm_title {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .score {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 .sm_score {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 // Button style
 .bt {
-    width: 100px;
-    height: 40px;
-    border: 1px solid silver;
-    border-radius: 25px;
-    background-color: whitesmoke;
+  width: 100px;
+  height: 40px;
+  border: 1px solid silver;
+  border-radius: 25px;
+  background-color: #faedf0;
+  text-align: center;
+  cursor: pointer;
+  p {
+    padding: 0.6rem;
     text-align: center;
-    cursor: pointer;
-    p {
-        padding: 0.6rem;
-        text-align: center;
-    }
+  }
+}
+
+// disable button
+.bt_disable {
+  @extend .bt;
+  pointer-events: none; //disable all events
+  background-color: rgb(78, 73, 73);
+  p {
+    padding: 0.6rem;
+    text-align: center;
+  }
 }
 
 // Button Panel
 .bt_panel {
-    display: grid;
-    grid-template-columns: auto;
+  display: grid;
+  grid-template-columns: auto;
 }
 
-.pt {
-    background-color: pink;
-}
-main {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    width: 80vw;
-    height: 60vh;
-    margin-top: 10%;
+.play {
+  animation: player_active 1s 1;
 }
 
-body {
-    margin: auto;
-    width: 80vw;
-    padding: 10px;
-    overflow-x: hidden;
+//animation
+@keyframes player_active {
+  0% {
+    background-color: aquamarine;
+  }
+  50% {
+    background-color: gray;
+  }
+  100% {
+    background-color: green;
+  }
 }

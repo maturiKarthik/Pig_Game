@@ -1,102 +1,103 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/pig.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/pig.css" />
     <title>Pig Game</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <section>
-            <div class="player">
-                <p class="sub_item title">Player Name-1</p>
+      <section>
+        <div class="player">
+          <p class="sub_item title">Player-1</p>
+        </div>
+        <div class="score">
+          <p class="sub_item t_score">0</p>
+        </div>
+        <div class="current_score">
+          <div class="sub_item sub_item_deco">
+            <p class="sm_title">Current</p>
+            <p class="sm_score">0</p>
+          </div>
+        </div>
+      </section>
+      <!--Button panel-->
+      <section class="pt">
+        <div>
+          <div class="bt" id="new_game">
+            <p>New Game</p>
+          </div>
+        </div>
+        <div>
+          <img
+            src="assets/die_1.png"
+            width="80"
+            height="80"
+            alt="dice"
+            id="dice_img"
+          />
+        </div>
+        <div class="bt_panel">
+          <div class="bt" id="bt_roll">
+            <p>Roll Dice</p>
+          </div>
+          <div class="bt bt_hold">
+            <p>Hold</p>
+          </div>
+        </div>
+      </section>
 
-            </div>
-            <div class="score">
-                <p class="sub_item t_score">0</p>
-            </div>
-            <div class="current_score">
-                <div class="sub_item sub_item_deco">
-                    <p class="sm_title">Current</p>
-                    <p class="sm_score">0</p>
-                </div>
-
-
-            </div>
-        </section>
-        <section class="pt">
-            <div>
-                <div class="bt">
-                    <p>New Game</p>
-                </div>
-
-            </div>
-            <div>
-                <img src="assets/die_1.png" width=80 height=80 alt="dice" id="dice_img" />
-            </div>
-            <div class="bt_panel">
-                <div class="bt" id="bt_roll">
-                    <p>Roll Dice</p>
-                </div>
-                <div class="bt bt_hold">
-                    <p>Hold</p>
-                </div>
-
-            </div>
-
-
-        </section>
-
-        <section>
-            <div class="player">
-                <p class="sub_item title">Player Name-2</p>
-
-            </div>
-            <div class="score">
-                <p class="sub_item t_c_score">0</p>
-            </div>
-            <div class="current_score">
-                <div class="sub_item sub_item_deco">
-                    <p class="sm_title">Current</p>
-                    <p class="sm_score sm_c_score">0</p>
-                </div>
-
-
-            </div>
-        </section>
+      <section>
+        <div class="player_c">
+          <p class="sub_item title">Computer</p>
+        </div>
+        <div class="score">
+          <p class="sub_item t_c_score">0</p>
+        </div>
+        <div class="current_score">
+          <div class="sub_item sub_item_deco">
+            <p class="sm_title">Current</p>
+            <p class="sm_score sm_c_score">0</p>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <br>
-    <br>
-    <br>
-
-
-    <h1>Rules Section Should Come here</h1>
-    <ul>
-        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi velit odit quisquam quidem tempora quo
-            porro error tenetur maiores, animi in officia temporibus sunt cumque necessitatibus fuga soluta et
-            asperiores?</li>
-        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi velit odit quisquam quidem tempora quo
-            porro error tenetur maiores, animi in officia temporibus sunt cumque necessitatibus fuga soluta et
-            asperiores?</li>
-        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi velit odit quisquam quidem tempora quo
-            porro error tenetur maiores, animi in officia temporibus sunt cumque necessitatibus fuga soluta et
-            asperiores?</li>
-        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi velit odit quisquam quidem tempora quo
-            porro error tenetur maiores, animi in officia temporibus sunt cumque necessitatibus fuga soluta et
-            asperiores?</li>
-        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi velit odit quisquam quidem tempora quo
-            porro error tenetur maiores, animi in officia temporibus sunt cumque necessitatibus fuga soluta et
-            asperiores?</li>
-
-    </ul>
-
-
-</body>
-<script type="module" src="./js/app.js"></script>
-
+    <br />
+    <br />
+    <br />
+    <section class="rules">
+      <h1>Instruction :</h1>
+      <p class="txt_sm">
+        The game of Pig is a very simple jeopardy dice game in which two players
+        race to reach 100 points. Each turn, a player repeatedly rolls a die
+        until either a 1 is rolled or the player holds and scores the sum of the
+        rolls (i.e. the turn total). At any time during a player's turn, the
+        player is faced with two decisions:
+      </p>
+      <ul>
+         <li class="txt_sm">
+          You have the liberty to set your own virtual score. (ex: 20,40,50 etc )
+        </li>
+        <li class="txt_sm">
+          If the player rolls a 1 the player scores nothing and it becomes the
+          opponent's turn.
+        </li>
+        <li class="txt_sm">
+          If the player rolls 2 - 6 the number is added to the player's turn
+          total and the player's turn continues.
+        </li class="txt_sm">
+        <li class="txt_sm">
+          hold Key - The turn total is added to the player's score and it
+          becomes the opponent's turn.
+        </li>
+      </ul>
+    </section>
+  </body>
+  <script type="module" src="./js/app.js"></script>
 </html>

@@ -1,77 +1,101 @@
+/** @format */
 
-import PlayerFactory from "./PlayerSwitcher.js"
-import ComPlayer from "./ComPlayer.js"
+import PlayerFactory from "./PlayerSwitcher.js";
 
-// UI- DOM - dice_img
-const dice_img = document.getElementById("dice_img")
-//Button
-const roll_bt = document.getElementById("bt_roll")
-const hold_bt = document.querySelector(".bt_hold")
-// Player score
-const sm_score = document.querySelector(".sm_score")
-const score = document.querySelector(".t_score")
-// computer score
-const sm_c_score = document.querySelector(".sm_c_score")
-const c_score = document.querySelector(".t_c_score")
-//Player Factory
-const playerFactory = new PlayerFactory()
-//const player_1 = playerFactory.getPlayer()
-let test = new ComPlayer()
+const dice_img = document.getElementById("dice_img");
+const roll_bt = document.getElementById("bt_roll");
+const hold_bt = document.querySelector(".bt_hold");
+const sm_score = document.querySelector(".sm_score");
+const score = document.querySelector(".t_score");
+const sm_c_score = document.querySelector(".sm_c_score");
+const c_score = document.querySelector(".t_c_score");
+const playerFactory = new PlayerFactory();
+const player_c = document.querySelector(".player_c");
+const new_game = document.querySelector("#new_game");
+let com_play_count = 0;
 
 // roll_dice
-roll_bt.addEventListener('click', function () {
-    let number = playerFactory.getPlayer().rollNum()
-    dice_img.src = "./assets/die_" + number + ".png"
-    console.log("Computer state on roll dice", playerFactory.getCPlayer())
-    if (playerFactory.computer_player) {
-        sm_c_score.innerHTML = playerFactory.getPlayer().setCurrentScore(number)
-    } else {
-        sm_score.innerHTML = playerFactory.getPlayer().setCurrentScore(number)
-    }
+roll_bt.addEventListener("click", function () {
+  let number = playerFactory.getPlayer().rollNum();
+  dice_img.src = "./assets/die_" + number + ".png";
+  if (playerFactory.computer_player) {
+    //sm_c_score.innerHTML = playerFactory.getPlayer().setCurrentScore(number);
+  } else {
+    sm_score.innerHTML = playerFactory.getPlayer().setCurrentScore(number);
+  }
 
-    if (number === 1) {
-        console.log("Change player and donot add")
-    }
-    console.log(number)
-})
+  if (number === 1) {
+    playerFactory.setCPlayer(false);
+    disableBt(true);
+    comPlay();
+    console.log("change player");
+  }
+});
 
-
-
-
-//Hold button 
-hold_bt.addEventListener('click', function () {
-    comPlay()
-    if (playerFactory.getCPlayer()) {
-        c_score.innerHTML = playerFactory.getPlayer().setTotalScore()
-        sm_c_score.innerHTML = playerFactory.getPlayer().setCurrentScore()
-        playerFactory.setCPlayer(false)
-
-    } else {
-        score.innerHTML = playerFactory.getPlayer().setTotalScore()
-        sm_score.innerHTML = playerFactory.getPlayer().setCurrentScore()
-        playerFactory.setCPlayer(true)
-    }
-})
+//Hold button
+hold_bt.addEventListener("click", function () {
+  console.log(playerFactory.getCPlayer());
+  if (!playerFactory.getCPlayer()) {
+    // Computer will play
+    score.innerHTML = playerFactory.getPlayer().setTotalScore();
+    sm_score.innerHTML = playerFactory.getPlayer().setCurrentScore();
+    playerFactory.setCPlayer(true);
+    disableBt(true);
+    comPlay();
+    console.log("Com play");
+  } else {
+    disableBt(false);
+  }
+});
 
 function comPlay() {
-    sm_c_score.innerHTML = playerFactory.getPlayer().setCurrentScore()
-    var exec_interval = window.setTimeout(() => {
-        //var dice_val = test.rollNum()
-        var dice_val = playerFactory.getPlayer().rollNum()
-        console.log("CP", dice_val,playerFactory.getPlayer().setCurrentScore())
-        if (dice_val != 1) {
-            playerFactory.getPlayer().setCurrentScore(dice_val)
-            comPlay()
-        } else {
-            console.log("Stop here")
-            window.clearTimeout(exec_interval)
-        }
-    }, 6000)
+  var exec_interval = window.setTimeout(() => {
+    var dice_val = playerFactory.getPlayer().rollNum();
+    dice_img.src = "./assets/die_" + dice_val + ".png";
+    //console.log("CP", dice_val, com_play_count);
+    switch (true) {
+      case dice_val == 1:
+        sm_c_score.innerHTML = playerFactory
+          .getPlayer()
+          .setCurrentScore(dice_val);
+        console.log("Stop here");
+        window.clearTimeout(exec_interval);
+        com_play_count = 0;
+        playerFactory.setCPlayer(false);
+        disableBt(false);
+        break;
+      case com_play_count <= 2:
+        sm_c_score.innerHTML = playerFactory
+          .getPlayer()
+          .setCurrentScore(dice_val);
+        com_play_count += 1;
+        comPlay();
+        break;
+      default:
+        //no-opt
+        sm_c_score.innerHTML = 0;
+        c_score.innerHTML = playerFactory.getPlayer().setTotalScore();
+        com_play_count = 0;
+        playerFactory.setCPlayer(false);
+        disableBt(false);
 
+        break;
+    }
+  }, 2000);
+}
 
-    //sm_c_score.innerHTML = test.setCurrentScore()
-    //test.play()
+function disableBt(state) {
+  if (state) {
+    player_c.classList.add("play");
+    roll_bt.classList.add("bt_disable");
+    hold_bt.classList.add("bt_disable");
+  } else {
+    player_c.classList.remove("play");
+    roll_bt.classList.remove("bt_disable");
+    hold_bt.classList.remove("bt_disable");
+  }
 }
 /*New Game => qs the name goes*/
-
-
+new_game.addEventListener("click", () => {
+  window.location.reload();
+});
